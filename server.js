@@ -9,7 +9,7 @@ const image = require("./controllers/image");
 const imageUrl = require("./controllers/imageUrl");
 
 require("dotenv").config();
-
+const PORT = process.env.PORT || 5000;
 const db = knex({
   client: "pg",
   connection: {
@@ -34,6 +34,6 @@ app.get("/profile/:id", profile.handleProfile(db));
 app.put("/image", image.handleImage(db));
 app.post("/imageUrl", imageUrl.handleFaceDetection());
 
-app.listen(5000, () => {
-  console.log("App is running on http://localhost:5000/");
+app.listen(PORT, () => {
+  console.log("App is running on port ${PORT}");
 });
