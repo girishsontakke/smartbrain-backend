@@ -28,6 +28,9 @@ app.use(express.json());
 app.use(cors());
 
 // API endpoints
+app.get("/", (req, res) => {
+  res.json("It is running");
+});
 app.post("/signin", signIn.handleSignIn(db));
 app.post("/register", register.handleRegister(db));
 app.get("/profile/:id", profile.handleProfile(db));
